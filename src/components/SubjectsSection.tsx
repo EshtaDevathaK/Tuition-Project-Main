@@ -1,12 +1,20 @@
 import { Calculator, Atom, Globe, BookA, PenTool, Cpu } from 'lucide-react'; // Lucide icons for subjects
 
+// Import background images for each subject card
+import mathBg from '../assets/math-bg.png'; // Mathematics background with formulas
+import physicsBg from '../assets/physics-bg.png'; // Physics background with scientific symbols  
+import chemistryBg from '../assets/chemistry-bg.png'; // Chemistry background with molecular structures
+import englishBg from '../assets/english-bg.png'; // English background with books and letters
+import hindiBg from '../assets/hindi-bg.png'; // Hindi background with Devanagari script
+import computerBg from '../assets/computer-bg.png'; // Computer Science background with code
+
 /* 
 SubjectsSection Component - Grid of available subjects
 Features: Colorful subject cards, hover effects, responsive grid, subject icons
 */
 const SubjectsSection = () => {
   
-  /* Array of subjects with icons, colors, and descriptions */
+  /* Array of subjects with icons, colors, descriptions, and background images */
   const subjects = [
     {
       icon: Calculator, // Calculator icon for Mathematics
@@ -14,7 +22,8 @@ const SubjectsSection = () => {
       description: "Algebra, Geometry, Calculus & More", // Subject description
       bgColor: "bg-gradient-to-br from-blue-500 to-blue-600", // Background gradient
       iconColor: "text-blue-100", // Icon color
-      textColor: "text-white" // Text color
+      textColor: "text-white", // Text color
+      bgImage: mathBg // Background image with mathematical formulas
     },
     {
       icon: Atom, // Atom icon for Physics
@@ -22,7 +31,8 @@ const SubjectsSection = () => {
       description: "Mechanics, Thermodynamics, Optics",
       bgColor: "bg-gradient-to-br from-purple-500 to-purple-600",
       iconColor: "text-purple-100",
-      textColor: "text-white"
+      textColor: "text-white",
+      bgImage: physicsBg // Background image with physics symbols
     },
     {
       icon: Globe, // Globe icon for Chemistry (representing molecular structures)
@@ -30,7 +40,8 @@ const SubjectsSection = () => {
       description: "Organic, Inorganic & Physical Chemistry",
       bgColor: "bg-gradient-to-br from-green-500 to-green-600",
       iconColor: "text-green-100",
-      textColor: "text-white"
+      textColor: "text-white",
+      bgImage: chemistryBg // Background image with molecular structures
     },
     {
       icon: BookA, // BookA icon for English
@@ -38,7 +49,8 @@ const SubjectsSection = () => {
       description: "Grammar, Literature & Writing Skills",
       bgColor: "bg-gradient-to-br from-red-500 to-red-600",
       iconColor: "text-red-100",
-      textColor: "text-white"
+      textColor: "text-white",
+      bgImage: englishBg // Background image with books and letters
     },
     {
       icon: PenTool, // PenTool icon for Hindi
@@ -46,7 +58,8 @@ const SubjectsSection = () => {
       description: "व्याकरण, साहित्य और लेखन कौशल",
       bgColor: "bg-gradient-to-br from-orange-500 to-orange-600",
       iconColor: "text-orange-100",
-      textColor: "text-white"
+      textColor: "text-white",
+      bgImage: hindiBg // Background image with Devanagari script
     },
     {
       icon: Cpu, // Cpu icon for Computer Science
@@ -54,7 +67,8 @@ const SubjectsSection = () => {
       description: "Programming, Data Structures, Algorithms",
       bgColor: "bg-gradient-to-br from-indigo-500 to-indigo-600",
       iconColor: "text-indigo-100",
-      textColor: "text-white"
+      textColor: "text-white",
+      bgImage: computerBg // Background image with code patterns
     }
   ];
 
@@ -95,13 +109,30 @@ const SubjectsSection = () => {
               <div 
                 key={index} // React key for list items
                 className={`subject-card group ${subject.bgColor} rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden relative`} // Card styling with hover effects
+                style={{
+                  // CSS background image with subtle opacity for readability
+                  backgroundImage: `url(${subject.bgImage})`, // Set background image from imported asset
+                  backgroundSize: 'cover', // Cover entire card area 
+                  backgroundPosition: 'center', // Center the background image
+                  backgroundRepeat: 'no-repeat' // Prevent image repetition
+                }}
               >
-                {/* Background decoration */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div> {/* Decorative circle */}
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full -ml-12 -mb-12"></div> {/* Another decorative circle */}
+                {/* Background image overlay for better text readability */}
+                <div 
+                  className="absolute inset-0 bg-black/20 dark:bg-black/40 rounded-2xl" // Dark overlay for light/dark mode compatibility
+                  style={{
+                    // Additional subtle blur effect on the background image
+                    backdropFilter: 'blur(0.5px)', // Slight blur for better text contrast
+                    zIndex: 1 // Place overlay above background image but below content
+                  }}
+                ></div>
+                
+                {/* Background decoration circles */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 z-[2]"></div> {/* Decorative circle with higher z-index */}
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full -ml-12 -mb-12 z-[2]"></div> {/* Another decorative circle with higher z-index */}
                 
                 {/* Subject content */}
-                <div className="relative z-10"> {/* Ensure content is above background decorations */}
+                <div className="relative z-[3]"> {/* Ensure content is above background decorations and overlay */}
                   
                   {/* Subject icon */}
                   <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"> {/* Icon container with hover scale */}
