@@ -2,95 +2,235 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* 
+Tuition Website Design System - Inspired by Vedantu's clean aesthetic
+All colors defined in HSL format for consistency and theme switching
+Orange/coral primary color scheme for education branding
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base theme colors - Light mode */
+    --background: 0 0% 100%; /* Pure white background */
+    --foreground: 224 71% 4%; /* Deep navy text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card components styling */
+    --card: 0 0% 100%; /* White card background */
+    --card-foreground: 224 71% 4%; /* Dark text on cards */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover/dropdown styling */
+    --popover: 0 0% 100%; /* White popover background */
+    --popover-foreground: 224 71% 4%; /* Dark popover text */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary brand colors - Orange/coral inspired by Vedantu */
+    --primary: 16 100% 66%; /* Vibrant orange (#ff6b35) */
+    --primary-foreground: 0 0% 100%; /* White text on orange */
+    --primary-light: 16 100% 85%; /* Light orange for hover states */
+    --primary-dark: 16 100% 45%; /* Darker orange for active states */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary colors - Neutral grays */
+    --secondary: 210 40% 96%; /* Light gray background */
+    --secondary-foreground: 224 71% 4%; /* Dark text on secondary */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted colors for less important content */
+    --muted: 220 14% 96%; /* Very light gray */
+    --muted-foreground: 220 9% 46%; /* Medium gray text */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent colors for highlights */
+    --accent: 210 40% 96%; /* Light accent background */
+    --accent-foreground: 224 71% 4%; /* Dark accent text */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Error/destructive colors */
+    --destructive: 0 84% 60%; /* Red for errors */
+    --destructive-foreground: 0 0% 98%; /* White text on red */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Border and input styling */
+    --border: 220 13% 91%; /* Light gray borders */
+    --input: 220 13% 91%; /* Input field borders */
+    --ring: 16 100% 66%; /* Focus ring color (matches primary) */
 
-    --radius: 0.5rem;
+    /* Border radius for consistent rounded corners */
+    --radius: 0.75rem; /* Slightly more rounded than default */
 
-    --sidebar-background: 0 0% 98%;
+    /* Gradient definitions for hero and sections */
+    --gradient-hero: linear-gradient(135deg, hsl(250 84% 54%) 0%, hsl(16 100% 66%) 100%); /* Violet to orange */
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 14% 98%) 100%); /* Subtle card gradient */
+    --gradient-button: linear-gradient(135deg, hsl(16 100% 66%) 0%, hsl(16 100% 56%) 100%); /* Button gradient */
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Shadow definitions for depth */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05); /* Small shadow */
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1); /* Medium shadow */
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1); /* Large shadow */
+    --shadow-glow: 0 0 20px hsl(16 100% 66% / 0.3); /* Orange glow effect */
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Animation timing for smooth interactions */
+    --transition-fast: 0.15s ease-out; /* Quick transitions */
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth easing */
   }
 
+  /* Dark mode color overrides */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 224 71% 4%; /* Dark navy background */
+    --foreground: 0 0% 98%; /* Light text */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 224 71% 6%; /* Slightly lighter card background */
+    --card-foreground: 0 0% 98%; /* Light text on cards */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 224 71% 6%; /* Dark popover background */
+    --popover-foreground: 0 0% 98%; /* Light popover text */
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Primary colors remain the same for brand consistency */
+    --primary: 16 100% 66%; /* Keep orange in dark mode */
+    --primary-foreground: 0 0% 100%; /* White text on orange */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 224 71% 10%; /* Dark secondary background */
+    --secondary-foreground: 0 0% 98%; /* Light text */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 224 71% 10%; /* Dark muted background */
+    --muted-foreground: 215 20% 65%; /* Medium light gray text */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 224 71% 10%; /* Dark accent background */
+    --accent-foreground: 0 0% 98%; /* Light accent text */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%; /* Darker red for dark mode */
+    --destructive-foreground: 0 85% 97%; /* Light text on red */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 224 71% 15%; /* Dark borders */
+    --input: 224 71% 15%; /* Dark input borders */
+    --ring: 16 100% 66%; /* Keep orange focus ring */
+
+    /* Dark mode gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(250 84% 25%) 0%, hsl(16 100% 35%) 100%); /* Darker hero gradient */
+    --gradient-card: linear-gradient(145deg, hsl(224 71% 6%) 0%, hsl(224 71% 8%) 100%); /* Dark card gradient */
+  }
+}
+
+/* Base element styling with design system integration */
+@layer base {
+  * {
+    @apply border-border; /* Apply consistent border color to all elements */
+  }
+
+  body {
+    @apply bg-background text-foreground; /* Set body background and text color from theme */
+    font-family: 'Inter', system-ui, -apple-system, sans-serif; /* Modern font stack */
+    line-height: 1.6; /* Improved readability */
+    -webkit-font-smoothing: antialiased; /* Smooth font rendering */
+    -moz-osx-font-smoothing: grayscale; /* Smooth font rendering for Firefox */
+  }
+
+  /* Remove default margin and padding for consistent spacing */
+  h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  /* Hero gradient background component */
+  .hero-gradient {
+    background: var(--gradient-hero); /* Apply hero gradient */
+    position: relative; /* For absolute positioned elements */
+  }
+
+  /* Card component with subtle gradient and shadow */
+  .glass-card {
+    background: var(--gradient-card); /* Subtle gradient background */
+    backdrop-filter: blur(10px); /* Glass effect */
+    border: 1px solid hsl(var(--border)); /* Subtle border */
+    box-shadow: var(--shadow-md); /* Medium shadow for depth */
+  }
+
+  /* Button hover effects */
+  .btn-primary {
+    background: var(--gradient-button); /* Orange gradient background */
+    transition: var(--transition-smooth); /* Smooth transitions */
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px); /* Subtle lift on hover */
+    box-shadow: var(--shadow-glow); /* Orange glow effect */
+  }
+
+  /* Outline button styling */
+  .btn-outline {
+    border: 2px solid hsl(var(--primary)); /* Orange border */
+    color: hsl(var(--primary)); /* Orange text */
+    background: transparent; /* Transparent background */
+    transition: var(--transition-smooth); /* Smooth transitions */
+  }
+
+  .btn-outline:hover {
+    background: hsl(var(--primary)); /* Fill with orange on hover */
+    color: hsl(var(--primary-foreground)); /* White text on hover */
+    transform: translateY(-1px); /* Subtle lift */
+  }
+
+  /* Section separator wave styling */
+  .section-wave {
+    width: 100%; /* Full width */
+    height: 60px; /* Fixed height for waves */
+    fill: currentColor; /* Use current text color for wave fill */
+  }
+
+  /* Floating animation for elements */
+  .float-animation {
+    animation: float 3s ease-in-out infinite; /* Continuous floating effect */
+  }
+
+  /* Subject card hover effects */
+  .subject-card {
+    transition: var(--transition-smooth); /* Smooth transitions */
+    cursor: pointer; /* Indicate interactivity */
+  }
+
+  .subject-card:hover {
+    transform: translateY(-4px) scale(1.02); /* Lift and slight scale on hover */
+    box-shadow: var(--shadow-lg); /* Larger shadow on hover */
+  }
+
+  /* Testimonial card styling */
+  .testimonial-card {
+    background: var(--gradient-card); /* Gradient background */
+    border-left: 4px solid hsl(var(--primary)); /* Orange left border accent */
+  }
+
+  /* WhatsApp floating button */
+  .whatsapp-float {
+    position: fixed; /* Fixed positioning */
+    bottom: 20px; /* Distance from bottom */
+    right: 20px; /* Distance from right */
+    z-index: 1000; /* High z-index to appear above other elements */
+    background: #25d366; /* WhatsApp green color */
+    border-radius: 50%; /* Circular shape */
+    width: 60px; /* Fixed width */
+    height: 60px; /* Fixed height */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    box-shadow: var(--shadow-lg); /* Large shadow for prominence */
+    transition: var(--transition-smooth); /* Smooth transitions */
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1); /* Scale up on hover */
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); /* Green glow effect */
+  }
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px); /* Start and end position */
+  }
+  50% {
+    transform: translateY(-10px); /* Middle position - floating up */
   }
 }
 
